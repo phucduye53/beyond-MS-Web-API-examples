@@ -34,7 +34,9 @@ namespace DemoApi
             services.AddDbContext<TodoContext>(opt =>
              opt.UseInMemoryDatabase("TodoList"));
 
+            services.AddScoped<TodoContext, TodoContext>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ITodoItemService, TodoItemService>();
             services.AddTransient<TodoHandler, TodoHandler>();
             services.Configure<AuthOption>(Configuration.GetSection("AuthOption"));
 
